@@ -1,0 +1,32 @@
+ *{
+padding: 0;
+margin: 0;    
+box-sizing: border-box; 
+}
+
+html {
+	scroll-behavior: smooth;
+	overflow-x: hidden;
+}
+
+body {
+	min-height: 100vh;
+	background-color: #fdbe91;
+	color: #ff751f;
+	line-height: 1.6;
+}
+
+.logo{
+
+}
+
+.navbar{
+
+}
+
+.profile{}
+
+.search-box{}
+
+.right-navbar{}
+
