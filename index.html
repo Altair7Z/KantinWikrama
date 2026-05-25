@@ -3,176 +3,154 @@
     <meta charset="utf-8">
     <meta name="viewport" width="device-width, initial-value=1.0" >
     <link rel="stylesheet" href="Style/style.css">
+    <title>Kantin Wikrama</title>
 </head>
 
 <body>
+    <!-- ===== NAVBAR (existing structure, no class changes) ===== -->
     <div class="navbar">
-
-    <div class="logo">
+      <div class="logo">
         <h1>KANTIN</h1>
         <p>WIKRAMA</p>
-    </div>
+      </div>
 
-    <div class="search-box">
-        <input type="text" id="searchBar" placeholder="Search...">
-    </div>
+      <div class="search-box">
+        <span class="search-icon">
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+          >
+            <circle cx="11" cy="11" r="8" />
+            <path d="m21 21-4.35-4.35" />
+          </svg>
+        </span>
+        <input type="text" id="searchBar" placeholder="Search..." />
+      </div>
 
-    <div class="right-navbar">
-        <h3>Selasa, 12 Mei 2026</h3>
-
-        <div class="profile">
-            <img src="profile.png" alt="">
-        </div>
-    </div>
-
-</div>
-
-<div class="menuMakanan">
-    <div id="hasilPencarian"></div>
-</div>
-
-<div class="sidebar">
-
-    <div class="sidebar-header">
-        <button class="arrow-btn"></button>
-
-        <div class="judul-sidebar">
-            <h2>Daftar Pesanan</h2>
-            <p>“Kantin Utama”</p>
-        </div>
-    </div>
-
-    <div class="tab-menu">
-        <button class="active">Pesanan</button>
-        <button>Pembayaran</button>
-    </div>
-
-    <div class="nomor-pesanan">
-        <h3>Nomor Pesanan:</h3>
-        <h1>#22</h1>
-    </div>
-
-    <div class="list-pesanan">
-
-        <div class="item">
-            <span>Es Kul-kul</span>
-            <span>5pcs</span>
-            <span>2k</span>
-        </div>
-
-        <div class="item">
-            <span>Sosis Bakar</span>
-            <span>1pcs</span>
-            <span>5k</span>
-        </div>
-
-        <div class="item">
-            <span>Risol Matcha</span>
-            <span>1pcs</span>
-            <span>3k</span>
-        </div>
-
-    </div>
-
-    <div class="total">
-        <h2>Total : 18k</h2>
-
-        <p>
-            Silahkan bayar dan ambil pesananmu di kantin!
-            Ingat nomor pesanannya ya..
-        </p>
-    </div>
-
-</div>
-    <script src="js/main.js"></script>
-</body>
-</html>
-<!DOCTYPE html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" width="device-width, initial-value=1.0" >
-    <link rel="stylesheet" href="Style/style.css">
-</head>
-
-<body>
-    <div class="navbar">
-
-    <div class="logo">
-        <h1>KANTIN</h1>
-        <p>WIKRAMA</p>
-    </div>
-
-    <div class="search-box">
-        <input type="text" id="searchBar" placeholder="Search...">
-    </div>
-
-    <div class="right-navbar">
-        <h3>Selasa, 12 Mei 2026</h3>
+      <div class="right-navbar">
+        <h3 id="currentDate">Selasa, 12 Mei 2026</h3>
 
         <div class="profile">
-            <img src="profile.png" alt="">
+          <div class="profile-avatar">
+            <svg viewBox="0 0 24 24" fill="white" width="26" height="26">
+              <path
+                d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"
+              />
+            </svg>
+            <span class="profile-dot"></span>
+          </div>
         </div>
+      </div>
     </div>
 
-</div>
+    <!-- ===== CONTENT AREA (wrapper added for layout) ===== -->
+    <div class="content-area">
+      <!-- LEFT PANEL: banners + food grid -->
+      <div class="left-content">
+        <!-- BANNER SECTION (new addition) -->
+        <div class="banner-section">
+          <!-- Banner: Tersedia -->
+          <div class="banner-card banner-available" data-filter="tersedia">
+            <div class="banner-badge">Tersedia</div>
+            <div class="banner-text-wrap">
+              <h2 class="banner-title">KATEGORI<br />PERHARGA</h2>
+            </div>
+            <div class="banner-deco-imgs">
+              <div class="bdeco bdeco-1">🍜</div>
+              <div class="bdeco bdeco-2">🥗</div>
+              <div class="bdeco bdeco-3">🍖</div>
+            </div>
+          </div>
 
-<div class="menuMakanan">
-    <div id="hasilPencarian"></div>
-</div>
+          <!-- Banner: Produk Lainnya / Out of Stock -->
+          <div class="banner-card banner-oos" data-filter="habis">
+            <div class="oos-content">
+              <div class="oos-stamp">
+                <span>OUT OF</span>
+                <span>STOCK</span>
+              </div>
+              <div class="oos-right">
+                <div class="oos-badge">
+                  <span>📦</span>
+                  <span>Makanan Habis</span>
+                </div>
+                <h2 class="banner-title banner-title--dark">
+                  PRODUK<br />LAINNYA
+                </h2>
+              </div>
+            </div>
+            <div class="banner-deco-imgs banner-deco-right">
+              <div class="bdeco bdeco-4">🥗</div>
+              <div class="bdeco bdeco-5">🍲</div>
+            </div>
+          </div>
+        </div>
 
-<div class="sidebar">
+        <!-- MENU MAKANAN (existing, inner grid moved to #hasilPencarian) -->
+        <div class="menuMakanan">
+          <div id="hasilPencarian"></div>
+        </div>
+      </div>
 
-    <div class="sidebar-header">
-        <button class="arrow-btn">></button>
+      <!-- SIDEBAR (existing structure, moved into content-area) -->
+      <div class="sidebar">
+        <!-- Sidebar decorations -->
+        <div class="sidebar-deco">
+          <div class="sd sd-1">🍊</div>
+          <div class="sd sd-2">🍋</div>
+          <div class="sd sd-3">🧊</div>
+          <div class="sd sd-4">🍓</div>
+        </div>
 
-        <div class="judul-sidebar">
+        <div class="sidebar-header">
+          <button class="arrow-btn" title="Tutup sidebar">&#x203A;</button>
+
+          <div class="judul-sidebar">
             <h2>Daftar Pesanan</h2>
-            <p>“Kantin Utama”</p>
-        </div>
-    </div>
-
-    <div class="tab-menu">
-        <button class="active">Pesanan</button>
-        <button>Pembayaran</button>
-    </div>
-
-    <div class="nomor-pesanan">
-        <h3>Nomor Pesanan:</h3>
-        <h1>#22</h1>
-    </div>
-
-    <div class="list-pesanan">
-
-        <div class="item">
-            <span>Es Kul-kul</span>
-            <span>5pcs</span>
-            <span>2k</span>
+            <p>"Kantin Utama"</p>
+          </div>
         </div>
 
-        <div class="item">
-            <span>Sosis Bakar</span>
-            <span>1pcs</span>
-            <span>5k</span>
+        <div class="tab-menu">
+          <button class="active" data-tab="pesanan">Pesanan</button>
+          <button data-tab="pembayaran">Pembayaran</button>
         </div>
 
-        <div class="item">
-            <span>Risol Matcha</span>
-            <span>1pcs</span>
-            <span>3k</span>
+        <!-- PESANAN TAB -->
+        <div id="pesananTab">
+          <div class="nomor-pesanan">
+            <h3>Nomor Pesanan:</h3>
+            <h1 id="nomorPesanan">#22</h1>
+          </div>
+
+          <div class="list-pesanan" id="listPesanan">
+            <!-- Rendered by CartManager -->
+          </div>
+
+          <div class="total">
+            <h2>Total : <span id="totalHarga">0k</span></h2>
+            <p>
+              Silahkan bayar dan ambil pesananmu di kantin! Ingat nomor
+              pesanannya ya..
+            </p>
+          </div>
         </div>
 
+        <!-- PEMBAYARAN TAB (hidden by default) -->
+        <div id="pembayaranPanel" style="display: none">
+          <!-- Rendered by SidebarManager.renderPayment() -->
+        </div>
+      </div>
     </div>
 
-    <div class="total">
-        <h2>Total : 18k</h2>
+    <!-- Toast notification -->
+    <div class="toast" id="toast"></div>
 
-        <p>
-            Silahkan bayar dan ambil pesananmu di kantin!
-            Ingat nomor pesanannya ya..
-        </p>
-    </div>
 
-</div>
     <script src="js/main.js"></script>
-</body>
+  </body>
 </html>
