@@ -7,7 +7,6 @@
 </head>
 
 <body>
-    <!-- ===== NAVBAR (existing structure, no class changes) ===== -->
     <div class="navbar">
       <div class="logo">
         <h1>KANTIN</h1>
@@ -47,13 +46,9 @@
       </div>
     </div>
 
-    <!-- ===== CONTENT AREA (wrapper added for layout) ===== -->
     <div class="content-area">
-      <!-- LEFT PANEL: banners + food grid -->
       <div class="left-content">
-        <!-- BANNER SECTION (new addition) -->
         <div class="banner-section">
-          <!-- Banner: Tersedia -->
           <div class="banner-card banner-available" data-filter="tersedia">
             <div class="banner-badge">Tersedia</div>
             <div class="banner-text-wrap">
@@ -64,9 +59,8 @@
               <div class="bdeco bdeco-2">🥗</div>
               <div class="bdeco bdeco-3">🍖</div>
             </div>
-          </div>
+        </div>
 
-          <!-- Banner: Produk Lainnya / Out of Stock -->
           <div class="banner-card banner-oos" data-filter="habis">
             <div class="oos-content">
               <div class="oos-stamp">
@@ -90,15 +84,12 @@
           </div>
         </div>
 
-        <!-- MENU MAKANAN (existing, inner grid moved to #hasilPencarian) -->
         <div class="menuMakanan">
           <div id="hasilPencarian"></div>
         </div>
       </div>
 
-      <!-- SIDEBAR (existing structure, moved into content-area) -->
       <div class="sidebar">
-        <!-- Sidebar decorations -->
         <div class="sidebar-deco">
           <div class="sd sd-1">🍊</div>
           <div class="sd sd-2">🍋</div>
@@ -120,7 +111,6 @@
           <button data-tab="pembayaran">Pembayaran</button>
         </div>
 
-        <!-- PESANAN TAB -->
         <div id="pesananTab">
           <div class="nomor-pesanan">
             <h3>Nomor Pesanan:</h3>
@@ -128,7 +118,6 @@
           </div>
 
           <div class="list-pesanan" id="listPesanan">
-            <!-- Rendered by CartManager -->
           </div>
 
           <div class="total">
@@ -140,14 +129,11 @@
           </div>
         </div>
 
-        <!-- PEMBAYARAN TAB (hidden by default) -->
         <div id="pembayaranPanel" style="display: none">
-          <!-- Rendered by SidebarManager.renderPayment() -->
         </div>
       </div>
     </div>
 
-    <!-- Toast notification -->
     <div class="toast" id="toast"></div>
 
 
