@@ -1,16 +1,10 @@
-/* =====================================================
-   KANTIN WIKRAMA — Style Sheet
-   Existing rules preserved · New additions below each section
-   ===================================================== */
-
-/* ─── CSS VARIABLES ─────────────────────────────────── */
 :root {
   --primary-orange: #ff751f;
   --primary-orange-light: #ff9a52;
   --primary-orange-dark: #e05c08;
   --text-dark: #4a4a4a;
   --text-medium: #6b6b6b;
-  --sidebar-bg: #ffab91;
+  --sidebar-bg: #ffdfd5;
   --white: #ffffff;
   --bg-main: #fdbe91;
   --bg-navbar: #fdf0e4;
@@ -23,7 +17,6 @@
   --transition: 0.22s ease;
 }
 
-/* ─── RESET ─────────────────────────────────────────── */
 * {
   padding: 0;
   margin: 0;
@@ -35,7 +28,6 @@ html {
   overflow-x: hidden;
 }
 
-/* ─── BODY ───────────────────────────────────────────── */
 body {
   display: flex;
   justify-content: space-between;
@@ -45,15 +37,12 @@ body {
   color: var(--primary-orange);
   font-family: "Nunito", sans-serif;
 
-  /* NEW: layout fix so navbar spans full width */
   flex-wrap: wrap;
   align-content: flex-start;
   align-items: flex-start;
   min-height: 100vh;
 }
 
-/* ─── NAVBAR ─────────────────────────────────────────── */
-/* Existing rules preserved */
 .logo h1 {
   font-size: 24px;
   margin: 0;
@@ -77,7 +66,6 @@ body {
   align-items: center;
   margin-bottom: 30px;
 
-  /* NEW: fill full row, navbar styles */
   width: 100%;
   margin-bottom: 0;
   background: var(--bg-navbar);
@@ -120,21 +108,15 @@ body {
   gap: 15px;
 }
 
-/* ─── MENU MAKANAN ───────────────────────────────────── */
-/* Existing rule preserved */
 .menuMakanan {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
   margin-top: 20px;
-
-  /* NEW: override to let #hasilPencarian handle the grid */
   display: block;
   margin-top: 0;
 }
 
-/* ─── SIDEBAR ─────────────────────────────────────────── */
-/* Existing rules preserved */
 .sidebar {
   width: 350px;
   background-color: var(--sidebar-bg);
@@ -142,8 +124,6 @@ body {
   padding: 25px;
   height: fit-content;
   color: var(--text-dark);
-
-  /* NEW: positioning and overflow */
   position: relative;
   overflow: hidden;
   flex-shrink: 0;
@@ -164,8 +144,6 @@ body {
   align-items: center;
   gap: 15px;
   margin-bottom: 20px;
-
-  /* NEW: z-index above deco */
   position: relative;
   z-index: 2;
 }
@@ -235,11 +213,6 @@ body {
   color: #5d4037;
 }
 
-/* ==========================================================
-   ▼ NEW ADDITIONS BELOW — Existing rules above untouched ▼
-   ========================================================== */
-
-/* ─── FONTS on LOGO ──────────────────────────────────── */
 .logo h1 {
   font-family: "Baloo 2", cursive;
   font-weight: 800;
@@ -259,7 +232,6 @@ body {
   line-height: 1;
 }
 
-/* ─── SEARCH BOX ICON ────────────────────────────────── */
 .search-box {
   position: relative;
   display: flex;
@@ -280,7 +252,6 @@ body {
   padding-left: 46px;
 }
 
-/* ─── RIGHT NAVBAR ───────────────────────────────────── */
 .right-navbar h3 {
   font-family: "Nunito", sans-serif;
   font-weight: 700;
@@ -318,7 +289,6 @@ body {
   border: 2px solid var(--bg-navbar);
 }
 
-/* ─── CONTENT AREA ───────────────────────────────────── */
 .content-area {
   display: flex;
   width: 100%;
@@ -334,7 +304,6 @@ body {
   gap: 20px;
 }
 
-/* ─── BANNER SECTION ─────────────────────────────────── */
 .banner-section {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -358,7 +327,6 @@ body {
   box-shadow: 0 12px 35px rgba(0, 0, 0, 0.14);
 }
 
-/* Available banner */
 .banner-available {
   background: linear-gradient(135deg, #ff751f 0%, #ffab5e 55%, #ffd09a 100%);
 }
@@ -395,7 +363,6 @@ body {
   letter-spacing: 0.5px;
 }
 
-/* Decorative food emojis on banner */
 .banner-deco-imgs {
   position: absolute;
   right: 0;
@@ -433,7 +400,6 @@ body {
   transform: rotate(20deg);
 }
 
-/* Out-of-stock banner */
 .banner-oos {
   background: linear-gradient(135deg, #fff4ec 0%, #fde8cc 100%);
   border: 2px solid rgba(255, 117, 31, 0.12);
@@ -511,14 +477,12 @@ body {
   transform: rotate(-5deg);
 }
 
-/* ─── FOOD GRID ──────────────────────────────────────── */
 #hasilPencarian {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 18px;
 }
 
-/* ─── FOOD CARD ──────────────────────────────────────── */
 .food-card {
   background: var(--bg-card);
   border-radius: var(--radius-card);
@@ -551,7 +515,6 @@ body {
   }
 }
 
-/* Stagger card animations */
 .food-card:nth-child(1) {
   animation-delay: 0.04s;
 }
@@ -655,7 +618,6 @@ body {
   font-size: 13.5px;
 }
 
-/* ─── ADD BUTTON (food card) ─────────────────────────── */
 .add-btn {
   width: 30px;
   height: 30px;
@@ -697,7 +659,6 @@ body {
   box-shadow: none;
 }
 
-/* ─── EMPTY STATE ────────────────────────────────────── */
 .empty-state {
   grid-column: 1 / -1;
   text-align: center;
@@ -718,7 +679,6 @@ body {
   font-weight: 600;
 }
 
-/* ─── SIDEBAR DECORATIONS ────────────────────────────── */
 .sidebar-deco {
   position: absolute;
   inset: 0;
@@ -761,7 +721,6 @@ body {
   opacity: 0.12;
 }
 
-/* ─── SIDEBAR ARROW BUTTON ───────────────────────────── */
 .arrow-btn {
   width: 36px;
   height: 36px;
@@ -787,7 +746,6 @@ body {
   transform: scale(1.1);
 }
 
-/* ─── TAB MENU (sidebar) ─────────────────────────────── */
 .tab-menu button {
   flex: 1;
   padding: 10px 0;
@@ -816,7 +774,6 @@ body {
   background: rgba(255, 255, 255, 0.2);
 }
 
-/* ─── NOMOR PESANAN ──────────────────────────────────── */
 .nomor-pesanan h3 {
   font-family: "Nunito", sans-serif;
   font-size: 14px;
@@ -833,7 +790,6 @@ body {
   line-height: 1;
 }
 
-/* ─── CART ITEMS ─────────────────────────────────────── */
 .item-name {
   flex: 1;
   font-family: "Nunito", sans-serif;
@@ -903,7 +859,6 @@ body {
   padding: 16px 0;
 }
 
-/* ─── PAYMENT PANEL ──────────────────────────────────── */
 #pembayaranPanel {
   position: relative;
   z-index: 2;
@@ -979,7 +934,6 @@ body {
   line-height: 1.8;
 }
 
-/* ─── TOAST NOTIFICATION ─────────────────────────────── */
 .toast {
   position: fixed;
   bottom: 28px;
@@ -1007,7 +961,6 @@ body {
   transform: translateX(-50%) translateY(0);
 }
 
-/* ─── SIDEBAR COLLAPSED STATE ────────────────────────── */
 .sidebar--collapsed {
   width: 68px;
   padding: 25px 16px;
@@ -1030,7 +983,6 @@ body {
   justify-content: center;
 }
 
-/* ─── SCROLLBAR ──────────────────────────────────────── */
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -1042,7 +994,6 @@ body {
   border-radius: 10px;
 }
 
-/* ─── RESPONSIVE ─────────────────────────────────────── */
 @media (max-width: 1300px) {
   #hasilPencarian {
     grid-template-columns: repeat(4, 1fr);
