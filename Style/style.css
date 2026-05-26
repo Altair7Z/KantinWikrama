@@ -12,7 +12,7 @@
   --bg-input: #fce4cc;
   --shadow-card: 0 4px 20px rgba(255, 117, 31, 0.12);
   --shadow-card-hover: 0 8px 30px rgba(255, 117, 31, 0.22);
-  --radius-card: 22px;
+  --radius-card: 22px;  
   --radius-btn: 50px;
   --transition: 0.22s ease;
 }
@@ -36,7 +36,6 @@ body {
   background-color: var(--bg-main);
   color: var(--primary-orange);
   font-family: "Nunito", sans-serif;
-
   flex-wrap: wrap;
   align-content: flex-start;
   align-items: flex-start;
@@ -53,32 +52,16 @@ body {
   letter-spacing: 2px;
 }
 
-.search-bar input {
-  padding: 10px 20px;
-  width: 400px;
-  border-radius: 20px;
-  border: 1px solid #ccc;
-}
-
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 30px;
-
   width: 100%;
   margin-bottom: 0;
   background: var(--bg-navbar);
   border-radius: 20px;
   padding: 18px 28px;
   box-shadow: 0 2px 12px rgba(255, 117, 31, 0.08);
-}
-
-.profile img {
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  background-color: #ddd;
 }
 
 .search-box input {
@@ -92,9 +75,7 @@ body {
   font-size: 15px;
   font-weight: 600;
   color: var(--text-dark);
-  transition:
-    background var(--transition),
-    box-shadow var(--transition);
+  transition: background var(--transition), box-shadow var(--transition);
 }
 
 .search-box input:focus {
@@ -108,15 +89,6 @@ body {
   gap: 15px;
 }
 
-.menuMakanan {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  margin-top: 20px;
-  display: block;
-  margin-top: 0;
-}
-
 .sidebar {
   width: 350px;
   background-color: var(--sidebar-bg);
@@ -127,9 +99,7 @@ body {
   position: relative;
   overflow: hidden;
   flex-shrink: 0;
-  transition:
-    width var(--transition),
-    padding var(--transition);
+  transition: width var(--transition), padding var(--transition);
   max-height: 90vh;
   overflow-y: auto;
   scrollbar-width: none;
@@ -164,7 +134,6 @@ body {
   display: flex;
   gap: 10px;
   margin-bottom: 25px;
-
   position: relative;
   z-index: 2;
 }
@@ -317,9 +286,7 @@ body {
   overflow: hidden;
   min-height: 160px;
   cursor: pointer;
-  transition:
-    transform var(--transition),
-    box-shadow var(--transition);
+  transition: transform var(--transition), box-shadow var(--transition);
 }
 
 .banner-card:hover {
@@ -479,8 +446,9 @@ body {
 
 #hasilPencarian {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 18px;
+  grid-template-columns: repeat(auto-fill, minmax(180px,1fr));
+  gap: 20px;
+  margin-top: 20px;
 }
 
 .food-card {
@@ -488,9 +456,7 @@ body {
   border-radius: var(--radius-card);
   overflow: hidden;
   box-shadow: var(--shadow-card);
-  transition:
-    transform var(--transition),
-    box-shadow var(--transition);
+  transition: transform var(--transition), box-shadow var(--transition);
   cursor: pointer;
   animation: cardFadeIn 0.35s ease both;
 }
@@ -515,45 +481,25 @@ body {
   }
 }
 
-.food-card:nth-child(1) {
-  animation-delay: 0.04s;
-}
-.food-card:nth-child(2) {
-  animation-delay: 0.08s;
-}
-.food-card:nth-child(3) {
-  animation-delay: 0.12s;
-}
-.food-card:nth-child(4) {
-  animation-delay: 0.16s;
-}
-.food-card:nth-child(5) {
-  animation-delay: 0.2s;
-}
-.food-card:nth-child(6) {
-  animation-delay: 0.24s;
-}
-.food-card:nth-child(7) {
-  animation-delay: 0.28s;
-}
-.food-card:nth-child(8) {
-  animation-delay: 0.32s;
-}
-.food-card:nth-child(9) {
-  animation-delay: 0.36s;
-}
-.food-card:nth-child(10) {
-  animation-delay: 0.4s;
-}
+.food-card:nth-child(1) { animation-delay: 0.04s; }
+.food-card:nth-child(2) { animation-delay: 0.08s; }
+.food-card:nth-child(3) { animation-delay: 0.12s; }
+.food-card:nth-child(4) { animation-delay: 0.16s; }
+.food-card:nth-child(5) { animation-delay: 0.2s; }
+.food-card:nth-child(6) { animation-delay: 0.24s; }
+.food-card:nth-child(7) { animation-delay: 0.28s; }
+.food-card:nth-child(8) { animation-delay: 0.32s; }
+.food-card:nth-child(9) { animation-delay: 0.36s; }
+.food-card:nth-child(10) { animation-delay: 0.4s; }
 
+/* PERUBAHAN: Gambar tanpa bulatan, full lebar */
 .food-img-wrap {
   width: 100%;
-  height: 135px;
+  height: 180px;
   background: linear-gradient(160deg, #fff3e8 0%, #fce4cc 100%);
   display: flex;
-  align-items: center;
   justify-content: center;
-  position: relative;
+  align-items: center;
   overflow: hidden;
 }
 
@@ -561,17 +507,7 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-.food-emoji {
-  font-size: 68px;
-  line-height: 1;
-  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
-  transition: transform 0.25s ease;
-}
-
-.food-card:hover .food-emoji {
-  transform: scale(1.12) rotate(-3deg);
+  display: block;
 }
 
 .food-oos-overlay {
@@ -633,10 +569,7 @@ body {
   align-items: center;
   justify-content: center;
   line-height: 1;
-  transition:
-    transform 0.15s,
-    background 0.15s,
-    box-shadow 0.15s;
+  transition: transform 0.15s, background 0.15s, box-shadow 0.15s;
   box-shadow: 0 3px 8px rgba(255, 117, 31, 0.35);
   padding-bottom: 1px;
   flex-shrink: 0;
@@ -695,31 +628,10 @@ body {
   transform: rotate(15deg);
 }
 
-.sd-1 {
-  top: -10px;
-  right: -10px;
-  font-size: 80px;
-  transform: rotate(20deg);
-}
-.sd-2 {
-  bottom: 60px;
-  right: -15px;
-  font-size: 70px;
-  transform: rotate(-10deg);
-}
-.sd-3 {
-  bottom: 10px;
-  left: -15px;
-  font-size: 65px;
-  transform: rotate(30deg);
-}
-.sd-4 {
-  top: 50%;
-  left: -10px;
-  font-size: 55px;
-  transform: rotate(-20deg);
-  opacity: 0.12;
-}
+.sd-1 { top: -10px; right: -10px; font-size: 80px; transform: rotate(20deg); }
+.sd-2 { bottom: 60px; right: -15px; font-size: 70px; transform: rotate(-10deg); }
+.sd-3 { bottom: 10px; left: -15px; font-size: 65px; transform: rotate(30deg); }
+.sd-4 { top: 50%; left: -10px; font-size: 55px; transform: rotate(-20deg); opacity: 0.12; }
 
 .arrow-btn {
   width: 36px;
@@ -733,9 +645,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition:
-    background var(--transition),
-    transform var(--transition);
+  transition: background var(--transition), transform var(--transition);
   flex-shrink: 0;
   padding-bottom: 1px;
   box-shadow: 0 3px 10px rgba(255, 117, 31, 0.3);
@@ -757,9 +667,7 @@ body {
   color: rgba(74, 74, 74, 0.55);
   cursor: pointer;
   border-radius: 10px;
-  transition:
-    background var(--transition),
-    color var(--transition);
+  transition: background var(--transition), color var(--transition);
   border-bottom: 2.5px solid transparent;
 }
 
@@ -822,9 +730,7 @@ body {
   align-items: center;
   justify-content: center;
   line-height: 1;
-  transition:
-    background var(--transition),
-    color var(--transition);
+  transition: background var(--transition), color var(--transition);
   padding-bottom: 1px;
 }
 
@@ -907,10 +813,7 @@ body {
   font-size: 15px;
   font-weight: 800;
   cursor: pointer;
-  transition:
-    background var(--transition),
-    transform var(--transition),
-    box-shadow var(--transition);
+  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
   box-shadow: 0 4px 14px rgba(255, 117, 31, 0.4);
   letter-spacing: 0.3px;
 }
@@ -949,9 +852,7 @@ body {
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.22);
   opacity: 0;
   pointer-events: none;
-  transition:
-    transform 0.3s ease,
-    opacity 0.3s ease;
+  transition: transform 0.3s ease, opacity 0.3s ease;
   white-space: nowrap;
   z-index: 9999;
 }
@@ -959,28 +860,6 @@ body {
 .toast--show {
   opacity: 1;
   transform: translateX(-50%) translateY(0);
-}
-
-.sidebar--collapsed {
-  width: 68px;
-  padding: 25px 16px;
-  overflow: hidden;
-}
-
-.sidebar--collapsed .judul-sidebar,
-.sidebar--collapsed .tab-menu,
-.sidebar--collapsed .nomor-pesanan,
-.sidebar--collapsed .list-pesanan,
-.sidebar--collapsed .total,
-.sidebar--collapsed #pembayaranPanel,
-.sidebar--collapsed .sidebar-deco {
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.15s;
-}
-
-.sidebar--collapsed .sidebar-header {
-  justify-content: center;
 }
 
 ::-webkit-scrollbar {
@@ -1025,4 +904,433 @@ body {
   .banner-section {
     grid-template-columns: 1fr;
   }
+}
+/* Perbaiki tampilan item di keranjang */
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  padding: 8px 0;
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.08);
+}
+
+.item-info {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.item-name {
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--text-dark);
+  text-transform: capitalize;
+}
+
+.item-detail {
+  font-family: "Nunito", sans-serif;
+  font-size: 11px;
+  color: var(--text-medium);
+  display: flex;
+  gap: 12px;
+}
+
+.item-detail span:first-child {
+  font-weight: 700;
+  color: var(--primary-orange);
+}
+
+.item-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 117, 31, 0.08);
+  padding: 4px 8px;
+  border-radius: 30px;
+}
+
+.qty-btn {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: none;
+  background: var(--primary-orange);
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.qty-btn.minus {
+  background: #ffaa80;
+}
+
+.qty-btn.minus:hover {
+  background: var(--primary-orange-dark);
+}
+
+.qty-btn.plus {
+  background: var(--primary-orange);
+}
+
+.qty-btn.plus:hover {
+  background: var(--primary-orange-dark);
+  transform: scale(1.05);
+}
+
+.item-qty {
+  font-family: "Nunito", sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--text-dark);
+  min-width: 35px;
+  text-align: center;
+}
+
+.item-total-price {
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--primary-orange-dark);
+  min-width: 45px;
+  text-align: right;
+}
+
+/* Header keranjang */
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+  border-bottom: 2px solid var(--primary-orange);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-medium);
+}
+
+.cart-header span:first-child {
+  flex: 2;
+}
+
+.cart-header span:last-child {
+  width: 100px;
+  text-align: right;
+}
+/* ========== PERBAIKAN KERANJANG ========== */
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  padding: 8px 0;
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.08);
+}
+
+.item-info {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.item-name {
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--text-dark);
+  text-transform: capitalize;
+}
+
+.item-detail {
+  font-family: "Nunito", sans-serif;
+  font-size: 11px;
+  color: var(--text-medium);
+  display: flex;
+  gap: 12px;
+}
+
+.item-detail span:first-child {
+  font-weight: 700;
+  color: var(--primary-orange);
+}
+
+.item-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 117, 31, 0.08);
+  padding: 3px 8px;
+  border-radius: 30px;
+}
+
+.qty-btn {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: none;
+  background: var(--primary-orange);
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.qty-btn.minus {
+  background: #ffaa80;
+}
+
+.qty-btn.minus:hover {
+  background: var(--primary-orange-dark);
+}
+
+.qty-btn.plus {
+  background: var(--primary-orange);
+}
+
+.qty-btn.plus:hover {
+  background: var(--primary-orange-dark);
+  transform: scale(1.05);
+}
+
+.item-qty {
+  font-family: "Nunito", sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--text-dark);
+  min-width: 28px;
+  text-align: center;
+}
+
+.item-total-price {
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--primary-orange-dark);
+  min-width: 40px;
+  text-align: right;
+}
+
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+  border-bottom: 2px solid var(--primary-orange);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-medium);
+}
+
+.cart-header span:first-child {
+  flex: 2;
+}
+
+.cart-header span:last-child {
+  width: 40px;
+  text-align: right;
+}
+
+.empty-cart {
+  text-align: center;
+  padding: 40px 20px;
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-medium);
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  margin-top: 20px;
+  line-height: 1.6;
+} 
+/* ========== SIDEBAR MINIMIZE FEATURE ========== */
+
+/* Konten utama - transisi saat sidebar berubah */
+.content-area {
+  transition: all 0.3s ease;
+}
+
+.left-content {
+  transition: flex 0.3s ease;
+}
+
+/* Sidebar dalam mode collapsed */
+.sidebar {
+  transition: width 0.3s ease, padding 0.3s ease, min-width 0.3s ease;
+  position: relative;
+}
+
+/* Mode collapsed - jadi garis tipis di kanan */
+.sidebar.sidebar--collapsed {
+  width: 48px !important;
+  min-width: 48px !important;
+  max-width: 48px !important;
+  padding: 25px 8px !important;
+  background: var(--bg-navbar);
+  box-shadow: -2px 0 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Sembunyikan semua konten saat collapsed */
+.sidebar.sidebar--collapsed .judul-sidebar,
+.sidebar.sidebar--collapsed .tab-menu,
+.sidebar.sidebar--collapsed .nomor-pesanan,
+.sidebar.sidebar--collapsed .list-pesanan,
+.sidebar.sidebar--collapsed .total,
+.sidebar.sidebar--collapsed #pembayaranPanel,
+.sidebar.sidebar--collapsed .sidebar-deco {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+/* Header sidebar saat collapsed - tetap ada tombol */
+.sidebar.sidebar--collapsed .sidebar-header {
+  justify-content: center;
+  margin-bottom: 0;
+}
+
+/* Tombol arrow saat collapsed - posisi tengah dan rotasi */
+.sidebar.sidebar--collapsed .arrow-btn {
+  transform: rotate(180deg);
+  margin: 0 auto;
+  background: var(--primary-orange-light);
+}
+
+/* Hover effect pada sidebar collapsed */
+.sidebar.sidebar--collapsed:hover {
+  background: var(--sidebar-bg);
+  cursor: pointer;
+}
+
+/* Badge indikator ada pesanan saat collapsed */
+.sidebar.sidebar--collapsed::after {
+  content: attr(data-badge);
+  position: absolute;
+  top: 20px;
+  right: 12px;
+  background: var(--primary-orange);
+  color: white;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 20px;
+  min-width: 18px;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.sidebar.sidebar--collapsed[data-badge]:not([data-badge="0"])::after {
+  opacity: 1;
+}
+
+/* Tooltip untuk sidebar collapsed */
+.sidebar.sidebar--collapsed .sidebar-header {
+  position: relative;
+}
+
+.sidebar.sidebar--collapsed .sidebar-header::before {
+  content: "Klik untuk buka";
+  position: absolute;
+  right: 55px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--text-dark);
+  color: white;
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+  z-index: 100;
+}
+
+.sidebar.sidebar--collapsed:hover .sidebar-header::before {
+  opacity: 0.9;
+  visibility: visible;
+}
+
+/* Konten kiri melebar saat sidebar collapsed */
+.sidebar.sidebar--collapsed ~ .content-area .left-content,
+body:has(.sidebar.sidebar--collapsed) .content-area .left-content {
+  flex: 1;
+  max-width: calc(100% - 48px - 20px);
+}
+
+/* Grid menu menyesuaikan */
+.sidebar.sidebar--collapsed ~ .content-area #hasilPencarian,
+body:has(.sidebar.sidebar--collapsed) #hasilPencarian {
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+/* Responsive untuk collapsed */
+@media (max-width: 860px) {
+  .sidebar.sidebar--collapsed {
+    width: 40px !important;
+    min-width: 40px !important;
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    z-index: 100;
+  }
+  
+  .sidebar.sidebar--collapsed ~ .content-area,
+  body:has(.sidebar.sidebar--collapsed) .content-area {
+    width: 100%;
+  }
+  
+  .sidebar.sidebar--collapsed .sidebar-header::before {
+    display: none;
+  }
+}
+/* ========== SEARCH BAR STYLE ========== */
+.search-box {
+  position: relative;
+}
+
+.search-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.search-box input {
+  padding-left: 45px !important;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 50px 20px;
+  color: #ff751f;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  grid-column: 1 / -1;
+}
+
+.empty-state span {
+  font-size: 48px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.empty-state p {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 5px 0;
 }
