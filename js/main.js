@@ -1,5 +1,3 @@
-// ================= MENU DATA =================
-
 const Menu = [
   {
     id: 1,
@@ -77,10 +75,8 @@ const Menu = [
     harga: 2,
     tersedia: true,
     gambar: "Img/piscok.jpg",
-  }
+  },
 ];
-
-// ================= CLASS =================
 
 class FoodItem {
   constructor({ id, name, harga, tersedia, gambar }) {
@@ -98,7 +94,9 @@ class FoodItem {
   toCardHTML() {
     const unavailableClass = this.tersedia ? "" : "food-card--unavailable";
     const disabledAttr = this.tersedia ? "" : "disabled";
-    const oosOverlay = this.tersedia ? "" : `<div class="food-oos-overlay">Habis</div>`;
+    const oosOverlay = this.tersedia
+      ? ""
+      : `<div class="food-oos-overlay">Habis</div>`;
 
     return `
       <div class="food-card ${unavailableClass}">
@@ -127,18 +125,12 @@ class CartItem {
   }
 }
 
-// ================= ELEMENT =================
-
 const hasilPencarian = document.getElementById("hasilPencarian");
 const listPesanan = document.getElementById("listPesanan");
 const totalHarga = document.getElementById("totalHarga");
 
-// ================= DATA =================
-
-const makanan = Menu.map(item => new FoodItem(item));
+const makanan = Menu.map((item) => new FoodItem(item));
 let keranjang = [];
-
-// ================= SIDEBAR MINIMIZE FUNCTION =================
 
 let isSidebarCollapsed = false;
 
@@ -155,35 +147,37 @@ function updateSidebarBadge() {
 function toggleSidebar(forceExpand = false) {
   const sidebar = document.querySelector(".sidebar");
   const arrowBtn = document.querySelector(".arrow-btn");
-  
+
   if (!sidebar) return;
-  
+
   if (forceExpand && isSidebarCollapsed) {
-    // Force expand (dipanggil saat ada pesanan masuk)
     sidebar.classList.remove("sidebar--collapsed");
     isSidebarCollapsed = false;
     if (arrowBtn) arrowBtn.innerHTML = "›";
-    document.querySelector(".content-area")?.classList.remove("sidebar-collapsed");
+    document
+      .querySelector(".content-area")
+      ?.classList.remove("sidebar-collapsed");
     showToast("Sidebar dibuka kembali 📋", 1000);
   } else if (!forceExpand) {
-    // Toggle normal
     sidebar.classList.toggle("sidebar--collapsed");
     isSidebarCollapsed = sidebar.classList.contains("sidebar--collapsed");
     if (arrowBtn) arrowBtn.innerHTML = isSidebarCollapsed ? "‹" : "›";
-    
+
     if (isSidebarCollapsed) {
-      document.querySelector(".content-area")?.classList.add("sidebar-collapsed");
+      document
+        .querySelector(".content-area")
+        ?.classList.add("sidebar-collapsed");
       showToast("Sidebar diminimize", 800);
     } else {
-      document.querySelector(".content-area")?.classList.remove("sidebar-collapsed");
+      document
+        .querySelector(".content-area")
+        ?.classList.remove("sidebar-collapsed");
       showToast("Sidebar dimaksimalkan", 800);
     }
   }
-  
+
   updateSidebarBadge();
 }
-
-// ================= TAMPIL MENU =================
 
 function tampilkanMenu(data) {
   if (data.length === 0) {
@@ -195,36 +189,32 @@ function tampilkanMenu(data) {
     `;
     return;
   }
-  
-  hasilPencarian.innerHTML = data.map(item => item.toCardHTML()).join("");
+
+  hasilPencarian.innerHTML = data.map((item) => item.toCardHTML()).join("");
   pasangButtonTambah();
 }
 
-// ================= TAMPIL MENU HABIS =================
 function tampilkanMenuHabis() {
-  const menuHabis = makanan.filter(item => !item.tersedia);
+  const menuHabis = makanan.filter((item) => !item.tersedia);
   tampilkanMenu(menuHabis);
 }
 
-// ================= TAMPIL MENU TERSEDIA =================
 function tampilkanMenuTersedia() {
-  tampilkanMenu(makanan.filter(item => item.tersedia));
+  tampilkanMenu(makanan.filter((item) => item.tersedia));
 }
 
-// ================= TAMBAH PESANAN =================
-
 function pasangButtonTambah() {
-  document.querySelectorAll(".add-btn").forEach(btn => {
+  document.querySelectorAll(".add-btn").forEach((btn) => {
     btn.onclick = () => {
       const id = Number(btn.dataset.id);
-      const makananDipilih = makanan.find(item => item.id === id);
+      const makananDipilih = makanan.find((item) => item.id === id);
 
       if (!makananDipilih.tersedia) {
         showToast(`${makananDipilih.name} sedang habis!`);
         return;
       }
 
-      const sudahAda = keranjang.find(item => item.food.id === id);
+      const sudahAda = keranjang.find((item) => item.food.id === id);
 
       if (sudahAda) {
         sudahAda.qty++;
@@ -236,22 +226,20 @@ function pasangButtonTambah() {
 
       renderKeranjang();
       updateSidebarBadge();
-      
-      // EXPAND SIDEBAR OTOMATIS saat ada pesanan masuk
+
       if (isSidebarCollapsed) {
-        toggleSidebar(true); // Force expand
+        toggleSidebar(true);
       }
-      
-      // Update pembayaran jika tab pembayaran aktif
-      const pembayaranTab = document.querySelector('.tab-menu button[data-tab="pembayaran"]');
-      if (pembayaranTab && pembayaranTab.classList.contains('active')) {
+
+      const pembayaranTab = document.querySelector(
+        '.tab-menu button[data-tab="pembayaran"]',
+      );
+      if (pembayaranTab && pembayaranTab.classList.contains("active")) {
         renderPembayaran();
       }
     };
   });
 }
-
-// ================= RENDER KERANJANG =================
 
 function renderKeranjang() {
   if (keranjang.length === 0) {
@@ -276,10 +264,10 @@ function renderKeranjang() {
     </div>
   `;
 
-  // Loop semua item di keranjang
+  // looping item di keranjang
   keranjang.forEach((item, index) => {
     const itemTotal = item.food.harga * item.qty;
-    
+
     html += `
       <div class="item" data-cart-index="${index}">
         <div class="item-info">
@@ -299,83 +287,83 @@ function renderKeranjang() {
   });
 
   listPesanan.innerHTML = html;
-  
-  const total = keranjang.reduce((total, item) => total + item.food.harga * item.qty, 0);
+
+  const total = keranjang.reduce(
+    (total, item) => total + item.food.harga * item.qty,
+    0,
+  );
   totalHarga.innerText = `${total}k`;
-  
+
   updateSidebarBadge();
-  
-  // Pasang event untuk tombol + dan - di keranjang
+
   pasangEventKeranjang();
 }
 
-// ================= EVENT UNTUK TOMBOL DI KERANJANG =================
-
 function pasangEventKeranjang() {
-  // Tombol MINUS (-)
-  document.querySelectorAll(".qty-btn.minus").forEach(btn => {
+  document.querySelectorAll(".qty-btn.minus").forEach((btn) => {
     btn.onclick = (e) => {
       e.stopPropagation();
       const id = Number(btn.dataset.id);
-      const itemIndex = keranjang.findIndex(item => item.food.id === id);
-      
+      const itemIndex = keranjang.findIndex((item) => item.food.id === id);
+
       if (itemIndex !== -1) {
         if (keranjang[itemIndex].qty > 1) {
           keranjang[itemIndex].qty--;
-          showToast(`${keranjang[itemIndex].food.name} -1 (${keranjang[itemIndex].qty} pcs tersisa)`);
+          showToast(
+            `${keranjang[itemIndex].food.name} -1 (${keranjang[itemIndex].qty} pcs tersisa)`,
+          );
         } else {
           const itemName = keranjang[itemIndex].food.name;
           keranjang.splice(itemIndex, 1);
           showToast(`🗑️ ${itemName} dihapus dari keranjang`);
         }
         renderKeranjang();
-        
-        // Update pembayaran jika tab pembayaran aktif
-        const pembayaranTab = document.querySelector('.tab-menu button[data-tab="pembayaran"]');
-        if (pembayaranTab && pembayaranTab.classList.contains('active')) {
+
+        const pembayaranTab = document.querySelector(
+          '.tab-menu button[data-tab="pembayaran"]',
+        );
+        if (pembayaranTab && pembayaranTab.classList.contains("active")) {
           renderPembayaran();
         }
       }
     };
   });
-  
-  // Tombol PLUS (+)
-  document.querySelectorAll(".qty-btn.plus").forEach(btn => {
+
+  document.querySelectorAll(".qty-btn.plus").forEach((btn) => {
     btn.onclick = (e) => {
       e.stopPropagation();
       const id = Number(btn.dataset.id);
-      const item = keranjang.find(item => item.food.id === id);
-      
+      const item = keranjang.find((item) => item.food.id === id);
+
       if (item) {
         item.qty++;
         renderKeranjang();
-        showToast(`${item.food.name} +1 (total ${item.qty} pcs) - ${item.food.harga * item.qty}k`);
-        
-        // Update pembayaran jika tab pembayaran aktif
-        const pembayaranTab = document.querySelector('.tab-menu button[data-tab="pembayaran"]');
-        if (pembayaranTab && pembayaranTab.classList.contains('active')) {
+        showToast(
+          `${item.food.name} +1 (total ${item.qty} pcs) - ${item.food.harga * item.qty}k`,
+        );
+
+        const pembayaranTab = document.querySelector(
+          '.tab-menu button[data-tab="pembayaran"]',
+        );
+        if (pembayaranTab && pembayaranTab.classList.contains("active")) {
           renderPembayaran();
         }
       }
     };
   });
 }
-
-// ================= TOAST NOTIFICATION =================
 
 function showToast(message, duration = 2000) {
   const toast = document.getElementById("toast");
   if (!toast) return;
-  
+
   toast.textContent = message;
   toast.classList.add("toast--show");
-  
+
   setTimeout(() => {
     toast.classList.remove("toast--show");
   }, duration);
 }
-
-// ================= SETUP BANNER =================
 
 function setupBanner() {
   const bannerTersedia = document.querySelector(".banner-available");
@@ -384,7 +372,7 @@ function setupBanner() {
   if (bannerTersedia) {
     const newBannerTersedia = bannerTersedia.cloneNode(true);
     bannerTersedia.parentNode.replaceChild(newBannerTersedia, bannerTersedia);
-    
+
     newBannerTersedia.addEventListener("click", (e) => {
       e.stopPropagation();
       tampilkanMenuTersedia();
@@ -395,7 +383,7 @@ function setupBanner() {
   if (bannerHabis) {
     const newBannerHabis = bannerHabis.cloneNode(true);
     bannerHabis.parentNode.replaceChild(newBannerHabis, bannerHabis);
-    
+
     newBannerHabis.addEventListener("click", (e) => {
       e.stopPropagation();
       tampilkanMenuHabis();
@@ -404,32 +392,33 @@ function setupBanner() {
   }
 }
 
-// ================= SETUP SEARCH BAR =================
-
 function setupSearchBar() {
   const searchInput = document.getElementById("searchBar");
   if (!searchInput) return;
-  
+
   searchInput.addEventListener("input", (e) => {
     const keyword = e.target.value.toLowerCase().trim();
-    
+
     if (keyword === "") {
       tampilkanMenu(makanan);
     } else {
-      const filtered = makanan.filter(item => item.name.toLowerCase().includes(keyword));
+      const filtered = makanan.filter((item) =>
+        item.name.toLowerCase().includes(keyword),
+      );
       tampilkanMenu(filtered);
     }
   });
 }
 
-// ================= RENDER PEMBAYARAN =================
-
 function renderPembayaran() {
   const pembayaranPanel = document.getElementById("pembayaranPanel");
-  const total = keranjang.reduce((total, item) => total + item.food.harga * item.qty, 0);
+  const total = keranjang.reduce(
+    (total, item) => total + item.food.harga * item.qty,
+    0,
+  );
   const tax = Math.floor(total * 0.1);
   const grandTotal = total + tax;
-  
+
   if (keranjang.length === 0) {
     pembayaranPanel.innerHTML = `
       <div class="payment-empty">
@@ -440,7 +429,7 @@ function renderPembayaran() {
     `;
     return;
   }
-  
+
   pembayaranPanel.innerHTML = `
     <div class="payment-summary">
       <h3>Detail Pembayaran</h3>
@@ -460,44 +449,46 @@ function renderPembayaran() {
       <button class="bayar-btn" id="bayarBtn">💰 Bayar Sekarang</button>
     </div>
   `;
-  
+
   const bayarBtn = document.getElementById("bayarBtn");
   if (bayarBtn) {
     bayarBtn.onclick = () => {
       const nomorPesanan = document.getElementById("nomorPesanan");
       const randomNum = Math.floor(Math.random() * 50) + 1;
       nomorPesanan.innerText = `#${randomNum}`;
-      
+
       const totalItems = keranjang.reduce((sum, item) => sum + item.qty, 0);
-      showToast(`✅ Pesanan #${randomNum} (${totalItems} item) berhasil! Ambil di kantin ya 🎉`);
-      
+      showToast(
+        `✅ Pesanan #${randomNum} (${totalItems} item) berhasil! Ambil di kantin ya 🎉`,
+      );
+
       keranjang = [];
       renderKeranjang();
       renderPembayaran();
       updateSidebarBadge();
-      
+
       setTimeout(() => {
-        const pesananTabBtn = document.querySelector('.tab-menu button[data-tab="pesanan"]');
+        const pesananTabBtn = document.querySelector(
+          '.tab-menu button[data-tab="pesanan"]',
+        );
         if (pesananTabBtn) pesananTabBtn.click();
       }, 1500);
     };
   }
 }
 
-// ================= SETUP TAB =================
-
 function setupTabs() {
   const tabs = document.querySelectorAll(".tab-menu button");
   const pesananTab = document.getElementById("pesananTab");
   const pembayaranPanel = document.getElementById("pembayaranPanel");
-  
-  tabs.forEach(tab => {
+
+  tabs.forEach((tab) => {
     tab.addEventListener("click", () => {
       const tabType = tab.dataset.tab;
-      
-      tabs.forEach(t => t.classList.remove("active"));
+
+      tabs.forEach((t) => t.classList.remove("active"));
       tab.classList.add("active");
-      
+
       if (tabType === "pesanan") {
         pesananTab.style.display = "block";
         pembayaranPanel.style.display = "none";
@@ -509,64 +500,64 @@ function setupTabs() {
       }
     });
   });
-  
+
   renderPembayaran();
 }
-
-// ================= SETUP TOGGLE SIDEBAR =================
 
 function setupSidebarToggle() {
   const arrowBtn = document.querySelector(".arrow-btn");
   const sidebar = document.querySelector(".sidebar");
-  
+
   if (arrowBtn && sidebar) {
-    // Hapus event listener lama dengan clone
     const newArrowBtn = arrowBtn.cloneNode(true);
     arrowBtn.parentNode.replaceChild(newArrowBtn, arrowBtn);
-    
+
     newArrowBtn.addEventListener("click", (e) => {
       e.stopPropagation();
       toggleSidebar();
     });
-    
-    // Klik pada sidebar yang collapsed juga bisa expand
+
     sidebar.addEventListener("click", (e) => {
-      if (sidebar.classList.contains("sidebar--collapsed") && 
-          e.target !== newArrowBtn && 
-          !newArrowBtn.contains(e.target)) {
+      if (
+        sidebar.classList.contains("sidebar--collapsed") &&
+        e.target !== newArrowBtn &&
+        !newArrowBtn.contains(e.target)
+      ) {
         toggleSidebar();
       }
     });
   }
-  
+
   updateSidebarBadge();
 }
-
-// ================= UPDATE TANGGAL =================
 
 function updateDate() {
   const dateElement = document.getElementById("currentDate");
   if (dateElement) {
-    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    const today = new Date().toLocaleDateString('id-ID', options);
+    const options = {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    };
+    const today = new Date().toLocaleDateString("id-ID", options);
     dateElement.textContent = today;
   }
 }
 
-// ================= RESIZE HANDLER =================
-
 function setupResizeHandler() {
   window.addEventListener("resize", () => {
     if (window.innerWidth <= 860 && isSidebarCollapsed) {
-      // Di mobile, collapsed sidebar jadi floating
-      document.querySelector(".sidebar")?.classList.add("sidebar--collapsed-mobile");
+      document
+        .querySelector(".sidebar")
+        ?.classList.add("sidebar--collapsed-mobile");
     } else {
-      document.querySelector(".sidebar")?.classList.remove("sidebar--collapsed-mobile");
+      document
+        .querySelector(".sidebar")
+        ?.classList.remove("sidebar--collapsed-mobile");
     }
   });
 }
-
-// ================= INITIALISASI =================
 
 function init() {
   tampilkanMenu(makanan);
@@ -579,43 +570,37 @@ function init() {
   updateDate();
 }
 
-// Jalankan saat halaman siap
 document.addEventListener("DOMContentLoaded", init);
-// ========== FITUR SEARCH ==========
 
+//search
 function setupSearchBar() {
   const searchInput = document.getElementById("searchBar");
-  
+
   if (!searchInput) {
     console.log("Search bar tidak ditemukan");
     return;
   }
-  
-  searchInput.addEventListener("input", function(e) {
+
+  searchInput.addEventListener("input", function (e) {
     const keyword = e.target.value.toLowerCase().trim();
-    
+
     if (keyword === "") {
-      // Tampilkan semua menu
       tampilkanMenu(makanan);
     } else {
-      // Filter menu berdasarkan nama
-      const filtered = makanan.filter(function(item) {
+      const filtered = makanan.filter(function (item) {
         return item.name.toLowerCase().includes(keyword);
       });
       tampilkanMenu(filtered);
     }
   });
 }
-
-// Panggil fungsi search
 setupSearchBar();
-// ========== FUNGSI TAMPIL MENU (jika belum ada) ==========
 
 function tampilkanMenu(data) {
   const hasilPencarian = document.getElementById("hasilPencarian");
-  
+
   if (!hasilPencarian) return;
-  
+
   if (data.length === 0) {
     hasilPencarian.innerHTML = `
       <div class="empty-state">
@@ -626,32 +611,28 @@ function tampilkanMenu(data) {
     `;
     return;
   }
-  
-  hasilPencarian.innerHTML = data.map(function(item) {
-    return item.toCardHTML();
-  }).join("");
-  
-  // Pasang ulang event tombol tambah
+
+  hasilPencarian.innerHTML = data
+    .map(function (item) {
+      return item.toCardHTML();
+    })
+    .join("");
+
   pasangButtonTambah();
 }
-// ========== OVERRIDE PEMBAYARAN TANPA PAJAK ==========
+const originalRenderPembayaran = window.renderPembayaran || function () {};
 
-// Simpan fungsi asli jika ada
-const originalRenderPembayaran = window.renderPembayaran || function(){};
-
-// Override fungsi renderPembayaran tanpa pajak
-renderPembayaran = function() {
+renderPembayaran = function () {
   const pembayaranPanel = document.getElementById("pembayaranPanel");
-  
+
   if (!pembayaranPanel) return;
-  
-  const total = keranjang.reduce(function(total, item) {
-    return total + (item.food.harga * item.qty);
+
+  const total = keranjang.reduce(function (total, item) {
+    return total + item.food.harga * item.qty;
   }, 0);
-  
-  // LANGSUNG PAKAI TOTAL, TANPA PAJAK
+
   const grandTotal = total;
-  
+
   if (keranjang.length === 0) {
     pembayaranPanel.innerHTML = `
       <div class="payment-empty">
@@ -662,7 +643,7 @@ renderPembayaran = function() {
     `;
     return;
   }
-  
+
   pembayaranPanel.innerHTML = `
     <div class="payment-summary">
       <h3>Detail Pembayaran</h3>
@@ -678,26 +659,34 @@ renderPembayaran = function() {
       <button class="bayar-btn" id="bayarBtn">💰 Bayar Sekarang</button>
     </div>
   `;
-  
+
   const bayarBtn = document.getElementById("bayarBtn");
   if (bayarBtn) {
-    bayarBtn.onclick = function() {
+    bayarBtn.onclick = function () {
       const nomorPesanan = document.getElementById("nomorPesanan");
       const randomNum = Math.floor(Math.random() * 50) + 1;
       if (nomorPesanan) nomorPesanan.innerText = "#" + randomNum;
-      
-      const totalItems = keranjang.reduce(function(sum, item) {
+
+      const totalItems = keranjang.reduce(function (sum, item) {
         return sum + item.qty;
       }, 0);
-      
-      showToast("✅ Pesanan #" + randomNum + " (" + totalItems + " item) berhasil! Ambil di kantin ya 🎉");
-      
+
+      showToast(
+        "✅ Pesanan #" +
+          randomNum +
+          " (" +
+          totalItems +
+          " item) berhasil! Ambil di kantin ya 🎉",
+      );
+
       keranjang = [];
       renderKeranjang();
       renderPembayaran();
-      
-      setTimeout(function() {
-        const pesananTabBtn = document.querySelector('.tab-menu button[data-tab="pesanan"]');
+
+      setTimeout(function () {
+        const pesananTabBtn = document.querySelector(
+          '.tab-menu button[data-tab="pesanan"]',
+        );
         if (pesananTabBtn) pesananTabBtn.click();
       }, 1500);
     };
