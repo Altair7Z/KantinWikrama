@@ -59,7 +59,7 @@ const Menu = [
     id: 9,
     name: "risol matcha",
     harga: 3,
-    tersedia: false,
+    tersedia: true,
     gambar: "Img/risolmatcha.jpg",
   },
   {
@@ -67,7 +67,7 @@ const Menu = [
     name: "pie susu",
     harga: 3,
     tersedia: false,
-    gambar: "Img/PieSusu.jpg",
+    gambar: "Img/PieSusu.png",
   },
   {
     id: 11,
@@ -76,6 +76,69 @@ const Menu = [
     tersedia: true,
     gambar: "Img/piscok.jpg",
   },
+{
+  id: 12,
+  name: "bakso",
+  harga: 10,
+  tersedia: true,
+  gambar: "Img/Baso.png",
+},
+{
+  id: 13,
+  name: "mie ayam",
+  harga: 10,
+  tersedia: false,
+  gambar: "Img/MieAyam.png",
+},
+{
+  id: 14,
+  name: "nasi bakar",
+  harga: 8,
+  tersedia: true,
+  gambar: "Img/NasiBakar.jpg",
+},
+{
+  id: 15,
+  name: "sosis",
+  harga: 5,
+  tersedia: true,
+  gambar: "Img/sosisbakar.png",
+},
+  {
+    id: 16,
+    name: "martabak",
+    harga: 3,
+    tersedia: true,
+    gambar: "Img/Martabak.png",
+  },
+{
+  id: 17,
+  name: "pukis",
+  harga: 2,
+  tersedia: true,
+  gambar: "Img/pukis.png",
+},
+{
+  id: 18,
+  name: "donat",
+  harga: 2,
+  tersedia: false,
+  gambar: "Img/donat.png",
+},
+{
+  id: 19,
+  name: "risolmayo",
+  harga: 3,
+  tersedia: true,
+  gambar: "Img/risolmayo.png",
+},
+{
+  id: 20,
+  name: "somay",
+  harga: 3,
+  tersedia: true,
+  gambar: "Img/somay.png",
+},
 ];
 
 class FoodItem {

@@ -187,6 +187,25 @@
             gap: 30px;
         }
 
+        .card-dev img {
+        width: 110px;            
+        height: 110px;              
+        border-radius: 50%;         
+        object-fit: cover;          
+        border: 3px solid var(--primary-orange-light);
+        margin-bottom: 20px;        
+        }
+
+        .avatar-dev {
+        overflow: hidden;    
+        }
+
+        .avatar-dev img {
+        width: 100%; 
+        height: 100%; 
+        object-fit: cover;        
+        }
+
         .card-dev {
             background-color: var(--white);
             border-radius: 20px;
